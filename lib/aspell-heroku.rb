@@ -14,3 +14,10 @@ module Aspell
   end
 
 end
+
+module FFI
+  module Aspell
+    ffi_lib ['aspell', File.expand_path('../aspell-heroku/binaries/lib', __FILE__) + '/libaspell.so']
+  end
+end
+
