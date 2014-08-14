@@ -16,9 +16,28 @@ Or install it yourself as:
 
     $ gem install aspell-heroku
 
+Setup the `LD_LIBRARY_PATH` as a `heroku` config
+
+    $ heroku config:set LD_LIBRARY_PATH=/app/vendor/bundle/ruby/2.1.0/bundler/gems/aspell-heroku-d2454dbfcadb/lib/aspell-heroku/binaries/lib/
+
+## Building aspell
+
+	curl -O ftp://ftp.gnu.org/gnu/aspell/aspell-0.60.6.1.tar.gz
+	tar xvzf aspell-0.60.6.1.tar.gz
+	cd aspell-0.60.6.1
+	./configure --prefix=/app/lib/aspell && make install
+	export PATH=$PATH:/app/lib/aspell/bin
+	cd ../
+	curl -O ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-7.1-0.tar.bz2
+	tar xjvf aspell6-en-7.1-0.tar.bz2
+	cd aspell6-en-7.1-0
+	./configure && make install
+	cd /
+	tar -czvf aspell-0.60.6.tgz /app/lib/aspell
+
 ## Usage
 
-TODO: Write usage instructions here
+You'll probably want to use [ffi/aspell](https://github.com/YorickPeterse/ffi-aspell) to handle interacting with Aspell library.
 
 ## Contributing
 
