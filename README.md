@@ -22,6 +22,8 @@ Setup the `LD_LIBRARY_PATH` as a `heroku` config
 
 ## Building aspell
 
+I used docker to help me build this locally.
+
 	curl -O ftp://ftp.gnu.org/gnu/aspell/aspell-0.60.6.1.tar.gz
 	tar xvzf aspell-0.60.6.1.tar.gz
 	cd aspell-0.60.6.1
@@ -38,6 +40,10 @@ Setup the `LD_LIBRARY_PATH` as a `heroku` config
 ## Usage
 
 You'll probably want to use [ffi/aspell](https://github.com/YorickPeterse/ffi-aspell) to handle interacting with Aspell library.
+
+	speller = FFI::Aspell::Speller.new('en_us', 'dict-dir' => Aspell::Heroku.lib_path)
+	speller.correct?('monkey')
+	=> true
 
 ## Contributing
 
