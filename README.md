@@ -24,6 +24,10 @@ Setup the `LD_LIBRARY_PATH` as a `heroku` config
 
 I used docker to help me build this locally.
 
+	docker run -it --rm -v `pwd`:/app ubuntu:14.04.1
+	apt-get update
+	apt-get install build-essential curl
+
 	curl -O ftp://ftp.gnu.org/gnu/aspell/aspell-0.60.6.1.tar.gz
 	tar xvzf aspell-0.60.6.1.tar.gz
 	cd aspell-0.60.6.1
